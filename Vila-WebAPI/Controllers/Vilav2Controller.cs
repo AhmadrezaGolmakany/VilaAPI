@@ -4,13 +4,15 @@ using Vila_WebAPI.Intefaces;
 
 namespace Vila_WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/vila")]
     [ApiController]
-    public class Vilav2Controller : ControllerBase
+    [ApiVersion("2.0")]
+
+    public class VilaV2Controller : ControllerBase
     {
         private readonly IVilaServices _vilaServices;
 
-        public Vilav2Controller(IVilaServices vilaServices)
+        public VilaV2Controller(IVilaServices vilaServices)
         {
             _vilaServices = vilaServices;
         }

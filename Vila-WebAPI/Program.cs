@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
@@ -7,6 +8,7 @@ using Vila_WebAPI.Context;
 using Vila_WebAPI.Intefaces;
 using Vila_WebAPI.Mapper;
 using Vila_WebAPI.Services;
+using Vila_WebAPI.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -31,19 +33,29 @@ services.AddTransient<IDetailService, DetailService>();
 
 #endregion
 
-#region Swagger
 
-services.AddSwaggerGen(x=> 
+#region Versioning
+
+services.AddApiVersioning(option =>
 {
-    x.SwaggerDoc("VilaOpenApi",
-        new OpenApiInfo()
-        {
-            Title = "Vila Api",
+    option.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1,0);
+    option.AssumeDefaultVersionWhenUnspecified = true;
+    option.ReportApiVersions = true;
 
-        });
 
-    x.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory , "comment.xml"));
 });
+
+
+services.AddVersionedApiExplorer(x =>
+{
+    x.GroupNameFormat = "'v'VVV";
+});
+
+#endregion
+
+#region Swagger
+services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerVilaDocument>();
+services.AddSwaggerGen();
 
 
 #endregion
@@ -57,10 +69,24 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    
+
+
+
+
     app.UseSwagger();
     app.UseSwaggerUI(x =>
     {
-        x.SwaggerEndpoint("/swagger/VilaOpenApi/swagger.json" , "Vila");
+        var provider = app.Services.CreateScope().ServiceProvider
+                .GetRequiredService<IApiVersionDescriptionProvider>();
+
+        foreach (var item in provider.ApiVersionDescriptions)
+        {
+            x.SwaggerEndpoint($"swagger/{item.GroupName}/swagger.json", item.GroupName.ToString());
+
+        }
+        //x.SwaggerEndpoint("/swagger/VilaOpenApi/swagger.json" , "Vila");
+        x.RoutePrefix = "";
     });
 
 }

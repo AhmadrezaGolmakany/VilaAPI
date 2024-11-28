@@ -7,8 +7,10 @@ using Vila_WebAPI.Models;
 
 namespace Vila_WebAPI.Controllers
 {
-    [Route("api/Vila")]
+    [Route("api/v{version:apiVersion}/Vila")]
     [ApiController]
+    //[ApiVersion("1.0")]
+
     public class VilaController : ControllerBase
     {
         private readonly IVilaServices _vila;
