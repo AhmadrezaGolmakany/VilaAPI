@@ -13,8 +13,10 @@ namespace Vila_WebAPI.Mapper
                 .ForMember(x => x.MadeDate, d => d.MapFrom(res => res.MadeDate.ToPersainDate()))
                 .ReverseMap()
                 .ForMember(x=>x.MadeDate , d=>d.MapFrom(res=>res.MadeDate.ToEnglishDateTime()));
-                
 
+            CreateMap<Detail, DetailDTO>().ReverseMap();
+
+            CreateMap<Vila, VilaSearch>();
         }
     }
 }

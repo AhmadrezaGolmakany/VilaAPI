@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Vila-WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:Vila_WebAPI.Controllers.DetailController.GetAllVilaDetail(System.Int32)">
+            <summary>
+            برای گرفتن امکانات ویلا
+            </summary>
+            <param name="vilaid"> ایدی ویلا</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vila_WebAPI.Controllers.DetailController.GetById(System.Int32)">
+            <summary>
+            گرفتن امکانات ویلا از طریق ایدی
+            </summary>
+            <param name="detailid">ایدی</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vila_WebAPI.Controllers.DetailController.Create(Vila_WebAPI.DTOs.DetailDTO)">
+            <summary>
+            اضافه کردن امکانات جدید برای یک ویلا
+            </summary>
+            <param name="model">مدل ورودی جهت اضافه کردن</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vila_WebAPI.Controllers.DetailController.Update(Vila_WebAPI.DTOs.DetailDTO,System.Int32)">
+            <summary>
+            ویرایش امکانات یک ویلا
+            </summary>
+            <param name="model">مدل ورودی</param>
+            <param name="detailid">ایدی</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vila_WebAPI.Controllers.DetailController.Remove(System.Int32)">
+            <summary>
+            حذف کردن امکانات یک ویلا
+            </summary>
+            <param name="detailid">ایدی</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vila_WebAPI.Controllers.VilaController.GetAll">
+            <summary>
+            برای گرفتن تمامی ویلاها
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vila_WebAPI.Controllers.VilaController.GetDetails(System.Int32)">
+            <summary>
+            برای گرفتن اطلاعات ویلا تکی
+            </summary>
+            <param name="id">ایدی ویلا</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vila_WebAPI.Controllers.VilaController.CreateVila(Vila_WebAPI.DTOs.VilaDTOs)">
+            <summary>
+            برای اضافه کردن یک ویلا
+            </summary>
+            <param name="model">مدل ورودی جهت اضافه کردن</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vila_WebAPI.Controllers.VilaController.Update(Vila_WebAPI.DTOs.VilaDTOs,System.Int32)">
+            <summary>
+            ویرایش یک ویلا
+            </summary>
+            <param name="model">مدل ورودی جهت ویرایش ویلا</param>
+            <param name="vilaid">ایدی ویلا</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vila_WebAPI.Controllers.VilaController.Remove(System.Int32)">
+            <summary>
+            حذف کردن یک ویلا 
+            </summary>
+            <param name="vilaid">ایدی ویلا</param>
+            <returns></returns>
+        </member>
+        <member name="T:Vila_WebAPI.Migrations.Addtblvila">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.Addtblvila.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.Addtblvila.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.Addtblvila.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vila_WebAPI.Migrations._ٍEditetblvila">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations._ٍEditetblvila.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations._ٍEditetblvila.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations._ٍEditetblvila.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vila_WebAPI.Migrations.tblDetail">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.tblDetail.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.tblDetail.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.tblDetail.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vila_WebAPI.Migrations.edite_vilatbl">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.edite_vilatbl.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.edite_vilatbl.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.edite_vilatbl.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

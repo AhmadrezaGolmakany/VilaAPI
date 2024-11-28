@@ -28,6 +28,10 @@ namespace Vila_WebAPI.DTOs
         public string? Mobile { get; set; }
 
         [Required(ErrorMessage = "لطفا {0} وارد کنید")]
+        public long dayPrice { get; set; }
+
+        public long SellPrice { get; set; }
+        [Required(ErrorMessage = "لطفا {0} وارد کنید")]
         [DateValidation]
         public string MadeDate { get; set; }
     }

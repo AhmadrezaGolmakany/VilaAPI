@@ -1,4 +1,5 @@
 ﻿using Vila_WebAPI.Models;
+using Vila_WebAPI.Paging;
 
 namespace Vila_WebAPI.Intefaces
 {
@@ -12,5 +13,8 @@ namespace Vila_WebAPI.Intefaces
 
         Vila GetById(int id);
         bool Save();
+
+
+        VilaPaging SearchVila(int pageid , string filter , int take);
     }
 }

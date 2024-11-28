@@ -20,7 +20,16 @@ namespace Vila_WebAPI.Controllers
             _mapper = mapper;
         }
 
+
+        /// <summary>
+        /// برای گرفتن تمامی ویلاها
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(502)]
+
         public IActionResult GetAll()
         {
             var list = _vila.GetAllVilas();
@@ -35,6 +44,18 @@ namespace Vila_WebAPI.Controllers
             return Ok(model);
         }
 
+
+
+        /// <summary>
+        /// برای گرفتن اطلاعات ویلا تکی
+        /// </summary>
+        /// <param name="id">ایدی ویلا</param>
+        /// <returns></returns>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(502)]
+
         [HttpGet("[action]/{id:int}" , Name = "GetDetails")]
         public IActionResult GetDetails(int id) 
         {
@@ -47,7 +68,22 @@ namespace Vila_WebAPI.Controllers
 
         }
 
+
+
+
+
+        
+        /// <summary>
+        /// برای اضافه کردن یک ویلا
+        /// </summary>
+        /// <param name="model">مدل ورودی جهت اضافه کردن</param>
+        /// <returns></returns>
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(502)]
+        [ProducesResponseType(400)]
+
         public IActionResult CreateVila([FromBody] VilaDTOs model )
         {
             if (!ModelState.IsValid)
@@ -68,7 +104,24 @@ namespace Vila_WebAPI.Controllers
 
         }
 
+
+
+
+      
+
+
+        /// <summary>
+        /// ویرایش یک ویلا
+        /// </summary>
+        /// <param name="model">مدل ورودی جهت ویرایش ویلا</param>
+        /// <param name="vilaid">ایدی ویلا</param>
+        /// <returns></returns>
         [HttpPatch("[action]/{vilaid:int}")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(502)]
+        [ProducesResponseType(400)]
+
         public IActionResult Update([FromBody] VilaDTOs model , int vilaid)
         {
             if (vilaid != model.VilaID) 
@@ -97,7 +150,21 @@ namespace Vila_WebAPI.Controllers
 
 
 
+
+
+
+        
+        /// <summary>
+        /// حذف کردن یک ویلا 
+        /// </summary>
+        /// <param name="vilaid">ایدی ویلا</param>
+        /// <returns></returns>
         [HttpDelete("{vilaid:int}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(502)]
         public IActionResult Remove(int vilaid)
         {
             var vila = _vila.GetById(vilaid);

@@ -30,6 +30,11 @@ namespace Vila_WebAPI.Models
         [Required(ErrorMessage = "لطفا {0} وارد کنید")]
         public DateTime MadeDate { get; set; }
 
+        [Required(ErrorMessage = "لطفا {0} وارد کنید")]
+        public long dayPrice { get; set; }
 
+        public long SellPrice { get; set; }
+
+        public List<Detail> details { get; set; }
     }
 }

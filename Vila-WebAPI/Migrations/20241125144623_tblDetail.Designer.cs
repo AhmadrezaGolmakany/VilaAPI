@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vila_WebAPI.Context;
 
@@ -11,9 +12,11 @@ using Vila_WebAPI.Context;
 namespace Vila_WebAPI.Migrations
 {
     [DbContext(typeof(VilaContext))]
-    partial class VilaContextModelSnapshot : ModelSnapshot
+    [Migration("20241125144623_tblDetail")]
+    partial class tblDetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,16 +84,10 @@ namespace Vila_WebAPI.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<long>("SellPrice")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("State")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
-
-                    b.Property<long>("dayPrice")
-                        .HasColumnType("bigint");
 
                     b.HasKey("VilaID");
 
