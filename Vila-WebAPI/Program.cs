@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
@@ -41,14 +42,15 @@ services.AddApiVersioning(option =>
     option.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1,0);
     option.AssumeDefaultVersionWhenUnspecified = true;
     option.ReportApiVersions = true;
-
+    option.ReportApiVersions = true;
+    //option.ApiVersionReader = new HeaderApiVersionReader("X-ApiVersion");
 
 });
 
 
 services.AddVersionedApiExplorer(x =>
 {
-    x.GroupNameFormat = "'v'VVV";
+    x.GroupNameFormat = "'v'VVVV";
 });
 
 #endregion

@@ -77,6 +77,33 @@ namespace Vila_WebAPI.Services
             return paging;
         }
 
+        public VilaPagingAdmin SearchVilaAdmin(int pageid, string filter, int take)
+        {
+
+            IQueryable<Vila> result = _context.vilas.Include(v => v.details);
+            if (!string.IsNullOrEmpty(filter))
+            {
+                result = result.Where(r => r.Name.Contains(filter) ||
+                    r.State.Contains(filter) ||
+                    r.City.Contains(filter) ||
+                    r.Address.Contains(filter)
+                );
+            }
+
+            VilaPagingAdmin paging = new();
+            paging.Generate(result, pageid, take);
+            paging.Filter = filter;
+            paging.vilaDTO = new();
+            int skip = (pageid - 1) * take;
+
+            var list = result.Skip(skip).Take(take).ToList();
+            list.ForEach(v =>
+            {
+                paging.vilaDTO.Add(_mapper.Map<VilaDTOs>(v));
+            });
+            return paging;
+        }
+
         public bool UpdateVila(Vila vila)
         {
             _context.vilas.Update(vila);

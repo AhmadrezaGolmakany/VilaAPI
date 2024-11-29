@@ -8,8 +8,9 @@ using Vila_WebAPI.Models;
 namespace Vila_WebAPI.Controllers
 {
     [Route("api/v{version:apiVersion}/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
-    //[ApiVersion("1.0")]
+    [ApiVersion("1.0")]
     public class DetailController : ControllerBase
     {
         private readonly IDetailService _detailService;

@@ -16,5 +16,6 @@ namespace Vila_WebAPI.Intefaces
 
 
         VilaPaging SearchVila(int pageid , string filter , int take);
+        VilaPagingAdmin SearchVilaAdmin(int pageid, string filter, int take);
     }
 }
