@@ -16,7 +16,9 @@ namespace Vila_WebAPI.Mapper
 
             CreateMap<Detail, DetailDTO>().ReverseMap();
 
-            CreateMap<Vila, VilaSearch>();
+            CreateMap<Vila, VilaSearch>().ReverseMap();
+
+            CreateMap<Customer ,LoginResultDTO >().ReverseMap();
         }
     }
 }

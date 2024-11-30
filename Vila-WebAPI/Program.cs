@@ -1,13 +1,17 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Text;
 using Vila_WebAPI.Context;
 using Vila_WebAPI.Intefaces;
 using Vila_WebAPI.Mapper;
+using Vila_WebAPI.Models;
 using Vila_WebAPI.Services;
 using Vila_WebAPI.Utility;
 
@@ -31,6 +35,7 @@ services.AddDbContext<VilaContext>(x =>
 
 services.AddTransient<IVilaServices, VilaServices>();
 services.AddTransient<IDetailService, DetailService>();
+services.AddTransient<ICustomerService, CustomerService>();
 
 #endregion
 
@@ -66,6 +71,44 @@ services.AddSwaggerGen();
 services.AddAutoMapper(typeof(MapperDTO));
 #endregion
 
+
+
+#region JWT
+
+var JwtSettingSection = builder.Configuration.GetSection("JwtSetting");
+
+services.Configure<JwtSettings>(JwtSettingSection);
+
+var Jwtsetting = JwtSettingSection.Get<JwtSettings>();
+
+
+var key = Encoding.ASCII.GetBytes(Jwtsetting.Secret);
+
+
+
+services.AddAuthentication(x =>
+{
+    x.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+}).AddJwtBearer(option =>
+{
+    option.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = Jwtsetting.Issure,
+        ValidateIssuer = true,
+        ValidAudience = Jwtsetting.Audience,
+        ValidateAudience = true,
+        ValidateLifetime = true
+
+    };
+});
+
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -94,7 +137,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

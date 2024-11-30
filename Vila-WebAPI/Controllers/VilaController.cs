@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Vila_WebAPI.DTOs;
@@ -11,7 +12,6 @@ namespace Vila_WebAPI.Controllers
     //[Route("api/Vila")]
     [ApiController]
     [ApiVersion("1.0")]
-
     public class VilaController : ControllerBase
     {
         private readonly IVilaServices _vila;
@@ -32,6 +32,7 @@ namespace Vila_WebAPI.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(502)]
+        [Authorize(Roles = "admin")]
 
         public IActionResult GetAll()
         {
@@ -58,6 +59,7 @@ namespace Vila_WebAPI.Controllers
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         [ProducesResponseType(502)]
+        [Authorize]
 
         [HttpGet("[action]/{id:int}" , Name = "GetDetails")]
         public IActionResult GetDetails(int id) 
@@ -86,6 +88,7 @@ namespace Vila_WebAPI.Controllers
         [ProducesResponseType(500)]
         [ProducesResponseType(502)]
         [ProducesResponseType(400)]
+        [Authorize(Roles = "admin")]
 
         public IActionResult CreateVila([FromBody] VilaDTOs model )
         {
@@ -124,6 +127,7 @@ namespace Vila_WebAPI.Controllers
         [ProducesResponseType(500)]
         [ProducesResponseType(502)]
         [ProducesResponseType(400)]
+        [Authorize(Roles = "admin")]
 
         public IActionResult Update([FromBody] VilaDTOs model , int vilaid)
         {
@@ -168,6 +172,8 @@ namespace Vila_WebAPI.Controllers
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         [ProducesResponseType(502)]
+        [Authorize(Roles = "admin")]
+
         public IActionResult Remove(int vilaid)
         {
             var vila = _vila.GetById(vilaid);

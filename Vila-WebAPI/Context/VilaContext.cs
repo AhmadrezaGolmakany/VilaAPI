@@ -12,5 +12,6 @@ namespace Vila_WebAPI.Context
 
         public DbSet<Vila> vilas { get; set; }
         public DbSet<Detail> details { get; set; }
+        public DbSet<Customer> customers { get; set; }
     }
 }
