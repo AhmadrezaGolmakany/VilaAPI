@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vila-WebAPI", "Vila-WebAPI\Vila-WebAPI.csproj", "{3825C24B-B444-485E-8DE4-FAE1573467CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vila.Web", "Vila.Web\Vila.Web.csproj", "{C6684E8C-8494-4B2F-9A50-F3C9FF6BC78B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3825C24B-B444-485E-8DE4-FAE1573467CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3825C24B-B444-485E-8DE4-FAE1573467CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3825C24B-B444-485E-8DE4-FAE1573467CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6684E8C-8494-4B2F-9A50-F3C9FF6BC78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6684E8C-8494-4B2F-9A50-F3C9FF6BC78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6684E8C-8494-4B2F-9A50-F3C9FF6BC78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6684E8C-8494-4B2F-9A50-F3C9FF6BC78B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

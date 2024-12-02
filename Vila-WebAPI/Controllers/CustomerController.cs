@@ -36,8 +36,7 @@ namespace Vila_WebAPI.Controllers
 
             if (_customerService.ExistMobile(model.Mobile))
             {
-                ModelState.AddModelError("model.Mobil", "تلفن همراه وارد شده قبلا در سایت ثبت نام کرده است.");
-                return BadRequest(model);
+                return BadRequest(new {erorr = "تلفن همراه وارد شده قبلا در سایت ثبت نام کرده است." });
 
             }
 
@@ -69,8 +68,7 @@ namespace Vila_WebAPI.Controllers
 
             if (_customerService.PasswordIsCorrect(model.Mobile , model.Mobile))
             {
-                ModelState.AddModelError("", "کاربری یافت نشد");
-                return BadRequest(model);
+                return BadRequest(new {error = "کاربر یافت نشد." });
 
             }
 
@@ -78,7 +76,7 @@ namespace Vila_WebAPI.Controllers
 
             if (user == null)
             {
-                return NotFound();
+                return NotFound(new {error = "کاربر یافت نشد" });
             }   
             return Ok(user);
 

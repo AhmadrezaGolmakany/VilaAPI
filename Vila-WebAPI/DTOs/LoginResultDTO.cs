@@ -7,7 +7,9 @@ namespace Vila_WebAPI.DTOs
     {
         public int userId { get; set; }
 
-        
+        public  string Mobile { get; set; }
+
+
         /// <summary>
         /// توکن احراز هویت Bearer
         /// </summary>
