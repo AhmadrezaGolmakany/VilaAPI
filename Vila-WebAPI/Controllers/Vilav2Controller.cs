@@ -7,7 +7,7 @@ using Vila_WebAPI.Paging;
 namespace Vila_WebAPI.Controllers
 {
     [Route("api/v{version:apiVersion}/Vila")]
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [ApiVersion("2.0")]
 

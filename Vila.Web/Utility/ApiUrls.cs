@@ -4,6 +4,7 @@
     {
         public string BaseAddress { get; set; }
         public string CustomerAddress { get; set; }
+        public string VilaV2Address { get; set; }
 
     }
 }

@@ -1,21 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Vila.Web.Models;
+using Vila.Web.Services.Vila;
 
 namespace Vila.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IVilaService _vilaService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IVilaService vilaService)
         {
-            _logger = logger;
+            _vilaService = vilaService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int pageId =1 , string fillter="" , int take =6)
         {
-            return View();
+            var model = await _vilaService.Search(pageId,fillter,take);
+            return View(model);
         }
 
         public IActionResult Privacy()

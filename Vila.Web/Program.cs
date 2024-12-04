@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Vila.Web.Services.Customer;
+using Vila.Web.Services.Vila;
 using Vila.Web.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ services.Configure<ApiUrls>(ApiUrlsSection);
 #region IOC
 
 services.AddTransient<ICustomerService, CustomerService>();
+services.AddTransient<IVilaService, VilaService>();
 
 
 #endregion
@@ -25,6 +27,7 @@ services.AddSession(x=>
 {
     x.IdleTimeout = TimeSpan.FromDays(7);
     x.Cookie.HttpOnly = true;
+    x.Cookie.IsEssential = true;
 
 });
 
@@ -46,13 +49,13 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
-app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
