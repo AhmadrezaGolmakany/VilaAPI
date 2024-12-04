@@ -6,5 +6,6 @@ namespace Vila.Web.Services.Customer
     public interface ICustomerService
     {
         Task<OperationResult> Register(RegisterModel model);
+        Task<LoginResultModel> Login(RegisterModel model);
     }
 }

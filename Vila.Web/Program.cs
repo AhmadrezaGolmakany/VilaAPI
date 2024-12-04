@@ -18,6 +18,18 @@ services.AddTransient<ICustomerService, CustomerService>();
 
 #endregion
 
+#region Session
+
+
+services.AddSession(x=>
+{
+    x.IdleTimeout = TimeSpan.FromDays(7);
+    x.Cookie.HttpOnly = true;
+
+});
+
+#endregion
+
 services.AddHttpClient();
 
 builder.Services.AddControllersWithViews();
@@ -34,7 +46,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
-
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

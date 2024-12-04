@@ -1,7 +1,58 @@
-﻿
+﻿@model Vila.Web.Models.customer.RegisterModel
+
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "ورود به سایت";
+    var res = ViewBag?.res;
 }
 
-<h1>Login</h1>
+<div class="site-section bg-light" id="contact-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="section-title mb-3">ورود به سایت</h2>
+                
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-7 mb-5">
+
+
+                <form method="post" class="p-5 bg-white">
+
+                    <h2 class="h4 text-black mb-5">فرم ورود </h2>
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="row form-group">
+
+                        <div class="col-md-12">
+                            <label class="text-black" asp-for="Mobile">تلفن همراه</label>
+                            <input type="text" asp-for="Mobile" class="form-control rounded-0">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+
+                        <div class="col-md-12">
+                            <label class="text-black" asp-for="Pass">کلمه عبور</label>
+                            <input type="password" asp-for="Pass" class="form-control rounded-0">
+
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <input type="submit" value="ورود به سایت" class="btn btn-success rounded-0 py-3 px-4">
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 

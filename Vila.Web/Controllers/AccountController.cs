@@ -51,7 +51,17 @@ namespace Vila.Web.Controllers
         {
             if (!ModelState.IsValid) { return View(model); }
 
-            return View();
+            var res = await _customerservice.Login(model);
+
+            if (!res.Result.Result)
+            {
+                ModelState.AddModelError("",res.Result.Message);
+                return View(model);
+            }
+            var customer = res.customer;
+            HttpContext.Session.SetString("JWTsecret" ,customer.JwtSecret );
+
+            return Redirect("/");
 
 
 
