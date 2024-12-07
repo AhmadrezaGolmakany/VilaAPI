@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.DependencyInjection;
 using Vila.Web.Services.Customer;
 using Vila.Web.Services.Vila;
@@ -12,10 +13,12 @@ var ApiUrlsSection = builder.Configuration.GetSection("ApiUrls");
 services.Configure<ApiUrls>(ApiUrlsSection);
 
 #endregion
+
 #region IOC
 
 services.AddTransient<ICustomerService, CustomerService>();
 services.AddTransient<IVilaService, VilaService>();
+services.AddTransient<IAuthService, AuthService>();
 
 
 #endregion
@@ -33,6 +36,21 @@ services.AddSession(x=>
 
 #endregion
 
+#region Auth
+
+services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(x =>
+    {
+        x.Cookie.HttpOnly = true;
+        x.ExpireTimeSpan = TimeSpan.FromDays(7);
+        x.LoginPath = "/Account/Login";
+        x.LogoutPath = "/Account/LogOut";
+        x.AccessDeniedPath = "/Account/NotAccess";
+    });
+
+services.AddHttpContextAccessor();
+
+
 services.AddHttpClient();
 
 builder.Services.AddControllersWithViews();
@@ -42,6 +60,7 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 
+#endregion
 
 
 if (!app.Environment.IsDevelopment())
@@ -49,12 +68,15 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
+app.UseAuthentication();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
+
 app.UseSession();
 
 app.MapControllerRoute(

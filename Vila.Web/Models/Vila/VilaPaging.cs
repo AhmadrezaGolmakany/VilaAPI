@@ -10,7 +10,7 @@
         public int EndPage { get; set; }
 
         public List<VilaSearchModel> vilas { get; set; }
-        public string Filter { get; set; }
+        public string Fillter { get; set; }
 
     }
 }
