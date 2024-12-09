@@ -1,0 +1,99 @@
+﻿@model Vila.Web.Models.Vila.VilaPaging
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+
+    var success = TempData["success"] != null;
+}
+
+<div class="site-section" id="products-section">
+    <div class="container">
+        <a asp-action="Create" class="btn btn-success">ویلای جدید</a>
+        <hr />
+        <div class="container">
+            <form>
+                <input type="hidden" class="form-control" name="PageId" value="@Model.PageId" />
+                <div class="col-12 col-md-10">
+                    <input type="text" class="form-control" name="filter" value="@Model.Fillter" />
+                </div>
+                <div class="col-12 col-md-2">
+                    <input style="margin-top:10px:" type="submit" class="btn btn-outline-info" value="جست و جو" />
+                    <input style="margin:10px;" asp-controller="Admin" asp-action="GetAllVila" type="submit" class="btn btn-outline-info" value="خالی کن " />
+
+                </div>
+
+            </form>
+        </div>
+
+        <hr />
+        @if (success)
+        {
+            <div class="alert alert-success" >
+                <h3> عملیات موفق!!!</h3>
+            </div>
+        }
+
+        <table class="table table-bordered" id="dataTable">
+            <thead>
+                <tr>
+                    <td>شماره</td>
+                    <td>تصویر</td>
+                    <td>نام ویلا</td>
+                    <td>استان</td>
+                    <td>شهرستان</td>
+                    <td>دستورات</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.vilas)
+                {
+                    <tr>
+                        <td>@item.VilaID</td>
+                        <td>
+                            @{
+                                var img = Convert.ToBase64String(item.Image);
+                                var src = string.Format("data:image/jpg;base64,{0}",img);
+
+                            }
+                            <img class="img-thumbnail" style="width:120px;" src="@src" />
+
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.State</td>
+                        <td>@item.City</td>
+                        <td>
+                            <a asp-action="EditeVila" asp-route-id="@item.VilaID" class="btn btn-warning">ویرایش </a>
+                            <a asp-action="DeleteVila" asp-route-id="@item.VilaID" class="btn btn-danger">حذف </a>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        @if (Model.PageCount > 1)
+        {
+            <div class=" container d-flex">
+                @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+                {
+                    if (i == Model.PageId)
+                    {
+                        <a class="btn btn-primary">@i</a>
+
+                    }
+                    else
+                    {
+                        <a href="/Admin/GetAllVila?pageid=@i&filter=@Model.Fillter" class="btn btn-outline-primary">@i</a>
+
+                    }
+
+                }
+
+
+            </div>
+        }
+        
+    </div>
+</div>

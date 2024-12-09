@@ -29,6 +29,7 @@ namespace Vila_WebAPI.DTOs
 
         [Required(ErrorMessage = "لطفا {0} وارد کنید")]
         public long dayPrice { get; set; }
+        public byte[] Image { get; set; }
 
         public long SellPrice { get; set; }
         [Required(ErrorMessage = "لطفا {0} وارد کنید")]

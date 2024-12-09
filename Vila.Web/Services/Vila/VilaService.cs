@@ -7,16 +7,18 @@ using Vila.Web.Models;
 using Vila.Web.Models.Vila;
 using Vila.Web.Utility;
 using System.Net.Http.Headers;
+using NuGet.Protocol.Core.Types;
+using Vila.Web.Services.Generic;
 
 namespace Vila.Web.Services.Vila
 {
-    public class VilaService : IVilaService
+    public class VilaService : Repository<VilaModel> , IVilaService
     {
         private readonly ApiUrls _urls;
         private readonly IHttpClientFactory _client;
 
 
-        public VilaService(IOptions<ApiUrls> urls, IHttpClientFactory client)
+        public VilaService(IOptions<ApiUrls> urls, IHttpClientFactory client) :base(client)
         {
             _urls = urls.Value;
             _client = client;
@@ -63,5 +65,11 @@ namespace Vila.Web.Services.Vila
 
             return null;
         }
+
+        
+
+
+
+           
     }
 }

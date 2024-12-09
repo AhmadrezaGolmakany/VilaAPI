@@ -22,6 +22,7 @@ namespace Vila.Web.Models.Vila
         public string? Mobile { get; set; }
 
         public long dayPrice { get; set; }
+        public byte[]? Image { get; set; }
 
         public long SellPrice { get; set; }
 

@@ -28,11 +28,11 @@
                     <input type="text" class="form-control" name="filter" value="@Model.Fillter" />
                 </div>
                 <div class="col-12 col-md-2">
-                    <input type="submit" class="btn btn-outline-info" value="جست و جو" />
+                    <input style="margin:10px;" type="submit" class="btn btn-outline-info" value="جست و جو" />
                 </div>
             </form>
         </div>
-
+        <hr />
 
         <div class="row">
 
@@ -49,7 +49,12 @@
                         <div class="col-lg-4 col-md-6 mb-5">
                             <div class="product-item">
                                 <figure>
-                                    <img src="/content/images/model_1_bg.jpg" alt="Image" class="img-fluid">
+                                    @{
+                                        var img = Convert.ToBase64String(item.Image);
+                                        var src = string.Format("data:image/jpg;base64,{0}", img);
+
+                                    }
+                                    <img class="card-img-top"  src="@src" />
                                 </figure>
                                 <div class="px-4">
                                     <h3><a href="#">@item.Name </a></h3>
@@ -66,8 +71,11 @@
 
                                         </span>
                                     </div>
-                                    <p class="mb-4">@item.Address</p>
-                                    <p class="mb-4">@item.Mobile</p>
+                                    <p class="mb-4">آدرس : @item.Address</p>
+                                    <p class="mb-4">شماره تماس : @item.Mobile</p>
+                                    <p class="mb-4">کرایه روزانه : @item.dayPrice.ToString("#,0") تومان</p>
+                                    <p class="mb-4">قیمت فروش : @item.SellPrice.ToString("#,0") تومان</p>
+
                                     <div>
                                         <a href="#" class="btn btn-black mr-1 rounded-0">افزودن به سبد</a>
                                         <a href="#" class="btn btn-black btn-outline-black ml-1 rounded-0">دیدن</a>

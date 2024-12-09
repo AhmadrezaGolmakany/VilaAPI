@@ -163,5 +163,41 @@
         <member name="M:Vila_WebAPI.Migrations.addtblcustomer.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Vila_WebAPI.Migrations.imageVila">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.imageVila.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.imageVila.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.imageVila.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vila_WebAPI.Migrations.image">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.image.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.image.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.image.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vila_WebAPI.Migrations.image1">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.image1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.image1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vila_WebAPI.Migrations.image1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

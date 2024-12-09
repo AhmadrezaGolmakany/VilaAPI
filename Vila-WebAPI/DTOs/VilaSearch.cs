@@ -19,7 +19,8 @@ namespace Vila_WebAPI.DTOs
         
         public string? Address { get; set; }
 
-       
+        public byte[]? Image { get; set; }
+
         public string? Mobile { get; set; }
 
         public long dayPrice { get; set; }

@@ -30,6 +30,8 @@ namespace Vila_WebAPI.Models
         [Required(ErrorMessage = "لطفا {0} وارد کنید")]
         public DateTime MadeDate { get; set; }
 
+        public byte[]? Image { get; set; }
+
         [Required(ErrorMessage = "لطفا {0} وارد کنید")]
         public long dayPrice { get; set; }
 

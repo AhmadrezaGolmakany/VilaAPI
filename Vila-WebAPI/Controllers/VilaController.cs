@@ -123,10 +123,10 @@ namespace Vila_WebAPI.Controllers
         /// <param name="vilaid">ایدی ویلا</param>
         /// <returns></returns>
         [HttpPatch("[action]/{vilaid:int}")]
-        [ProducesResponseType(201)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         [ProducesResponseType(502)]
-        [ProducesResponseType(400)]
         [Authorize(Roles = "admin")]
 
         public IActionResult Update([FromBody] VilaDTOs model , int vilaid)
@@ -147,7 +147,7 @@ namespace Vila_WebAPI.Controllers
 
             if (!_vila.UpdateVila(vila))
             {
-                return StatusCode(204);
+                return NoContent();
             }
             ModelState.AddModelError("", "مشکلی از سمت سرور پیش آمره لطفا مجددا تلاش کنید.");
 
@@ -167,7 +167,6 @@ namespace Vila_WebAPI.Controllers
         /// <param name="vilaid">ایدی ویلا</param>
         /// <returns></returns>
         [HttpDelete("{vilaid:int}")]
-        [ProducesResponseType(200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
