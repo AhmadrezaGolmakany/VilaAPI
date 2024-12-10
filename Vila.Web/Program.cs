@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.DependencyInjection;
 using Vila.Web.Services.Customer;
+using Vila.Web.Services.Detail;
 using Vila.Web.Services.Vila;
 using Vila.Web.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
-
+services.AddCors();
 #region ApiURL
 
 var ApiUrlsSection = builder.Configuration.GetSection("ApiUrls");
@@ -19,6 +20,7 @@ services.Configure<ApiUrls>(ApiUrlsSection);
 services.AddTransient<ICustomerService, CustomerService>();
 services.AddTransient<IVilaService, VilaService>();
 services.AddTransient<IAuthService, AuthService>();
+services.AddTransient<IDetailService, DetailService>();
 
 
 #endregion
@@ -68,6 +70,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
+app.UseCors(x=>x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 app.UseAuthentication();
 
 app.UseHttpsRedirection();

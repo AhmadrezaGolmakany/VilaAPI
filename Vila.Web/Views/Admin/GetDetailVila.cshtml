@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Vila.Web.Models.Detail.DetailModel>
+
+@{
+    ViewData["Title"] = "GetDetailVila";
+    var vila = ViewData["vila"] as Vila.Web.Models.Vila.VilaModel;
+    var success = TempData["success"] != null;
+
+}
+
+<h1> @vila.Name امکانات ویلا</h1>
+
+
+
+<a asp-action="CreateVilaDetail" asp-route-id="@vila.VilaID" class="btn btn-success">افزودن امکانات</a>
+@if (success)
+{
+    <div class="alert alert-success">
+        <h3> عملیات موفق!!!</h3>
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                شماره ویلا
+            </th>
+            <th>
+                ویژگی
+            </th>
+            <th>
+                مقدار
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeyailaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VilaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.What)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="EditVilaDetail" asp-route-id="@item.DeyailaId">
+                        ویرایش ویژگی
+                    </a>
+                    <a class="btn btn-danger" asp-action="DeleteVilaDetail" asp-route-id="@item.DeyailaId">
+                        حذف ویژگی
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

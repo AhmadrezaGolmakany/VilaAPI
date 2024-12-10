@@ -31,6 +31,8 @@ services.AddDbContext<VilaContext>(x =>
 });
 #endregion
 
+services.AddCors();
+
 #region IOC
 
 services.AddTransient<IVilaServices, VilaServices>();
@@ -135,6 +137,7 @@ if (app.Environment.IsDevelopment())
     });
 
 }
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
